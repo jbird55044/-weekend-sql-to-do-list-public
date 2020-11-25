@@ -1,6 +1,8 @@
 .headerStyle {
    
-    background-color: blanchedalmond;
+    background-color: #B7B7A4;
+    margin-right: 20px;
+    max-width: 800px;
 }
 
 small {
@@ -12,7 +14,7 @@ small {
 }
 
 body {
-    background-color: antiquewhite;
+    background-color: #EDDCD2;
     margin-left: 20px;
 }
 
@@ -42,12 +44,31 @@ margin: 25px;
     margin-top: 3px;
 }
 
+.btn-secondary {
+    background-color: #A5A58D;
+}
+.dropdown-menu {
+    background-color: #A5A58D;
+}
+.dropdown-item {
+    background-color: #A5A58D;
+}
+
 .btn-group {
     margin-left: 15px;
 }
 
+.btn-group .btn {
+    background-color: #A5A58D;
+}
+
 .table {
     margin-top: 15px;
+    background-color: #F0EFEB;
+}
+
+.table th {
+    background-color: #B7B7A4;
 }
 .dropDownAreaClass {
     margin: 0 auto;
