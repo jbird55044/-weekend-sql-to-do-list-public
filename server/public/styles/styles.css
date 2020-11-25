@@ -5,6 +5,9 @@
     max-width: 800px;
 }
 
+garbage {
+    color: #bebe02;
+}
 small {
     font-size: smaller;
 }

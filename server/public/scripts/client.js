@@ -196,10 +196,14 @@ function getTodos(todoId){
                     <td>${formatSqlDate(response[i].create_date)}</td>
                     <td>${formatSqlDate(response[i].modified_date)}</td>
                     <td>${dueDate}</td>
-                    <td>${response[i].category_color}</td>
+                    <td id="catColorId${response[i].id}">${response[i].category_color}</td>
                     <td>${response[i].status}</td>
               `;
       $('#viewTodoDataId').append(html)
+      let catColor = response[i].category_color
+      if ( catColor === 'Yellow') catColor = '#bebe02'
+      $(`#catColorId${response[i].id}`).css ('color', catColor)
+      if ( response[i].status === 'Complete' )  $('.trTableBodyClass').css ('textDecoration', 'line-through')
       }  // end of for loop
   })
   .catch ( function (error){
@@ -207,7 +211,7 @@ function getTodos(todoId){
     alert ('Something bad happened in GET')
   });
 }   // end get todos
-
+ß
 // formatting and POST of todo data
 function saveTodos(  ){
   // ajax call to server to get todos
