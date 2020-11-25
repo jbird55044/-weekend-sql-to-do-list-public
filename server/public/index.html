@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jims Todo Application</title>
+    <script src="vendors/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="vendors/bootstrap.bundle.js" charset="utf-8"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+  <body>
+    <header class="headerStyle">
+        <h2 class="centeredClass">Jims Todo Application - 
+          <small class="text-muted">Welcome!</small>
+        </h2>
+   </header>
+
+    <div id="addTodo" class="userInputClass">
+      <h3>Add Todo  
+          <span class="text-muted" id="updateRecordLabelId">
+          </span><span class="text-muted" id="updateRecordId"></span>
+          <span class="text-muted" id="lastUpdateLabelId">
+          </span><span class="text-muted" id="lastUpdateDateId"></span>
+          <span class="text-muted" id="completedDateLabelId">
+          </span><span class="text-muted" id="completedDateId"></span>
+      </h3>
+      <input type="text" id="nameId" value="" placeholder="Task Name" size=20>
+      <input type="text" id="noteId" value="" placeholder="Task Note" size=50>
+      <div class="dropDownAreaClass">
+        <input class="floatLeft" type="text" id="dueDateId" value="" placeholder="Due Date" size=10>
+        <label class="floatLeft">Category: </label>
+        <div class="dropdown floatCenter">
+          <button class="btn btn-secondary dropdown-toggle " type="button" id="ddMenuCategoryId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Green
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" id="greenButtonId" type="button">Green</button>
+            <button class="dropdown-item" id="greyButtonId" type="button">Grey</button>
+            <button class="dropdown-item" id="blueButtonId" type="button">Blue</button>
+            <button class="dropdown-item" id="yellowButtonId" type="button">Yellow</button>
+            <button class="dropdown-item" id="redButtonId" type="button">Red</button>
+          </div>
+        </div>
+        <label class="floatLeft">Status: </label>
+        <div class="dropdown floatRight">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="ddMenuStatusId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Active
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" id="activeButtonId" type="button">Active</button>
+            <button class="dropdown-item" id="onHoldButtonId" type="button">On Hold</button>
+            <button class="dropdown-item" id="rainyDayButtonId" type="button">Rainy Day</button>
+            <button class="dropdown-item" id="completeButtonId" type="button">Complete</button>
+          </div>
+        </div>
+      </div>
+      <div class="addButtonsDivClass">
+        <button class="addButtonsClass" type="button" id="modifyButtonId">Update Existing Task</button>
+        <button class="addButtonsClass" type="button" id="addButtonId">Add New Task</button>
+        <button class="addButtonsClass" type="button" id="deleteButtonId">Delete Record</button>
+        <button class="addButtonsClass" type="button" id="cancelButtonId">Cancel</button>
+      </div>
+    </div>
+
+    
+    
+      <hr>
+    </div>
+    <section>
+      <h3>The Todo List <span id="sortIndicatorId"></span></h3>
+      <button class="btn btn-secondary dropdown-toggle " type="button" id="ddMenuCategoryId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort Due Date 
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" id="sortAscId" type="button">Ascending</button>
+        <button class="dropdown-item" id="sortDescId" type="button">Descending</button>
+      </div>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Note</th>
+            <th>Create Date</th>
+            <th>Modify Date</th>
+            <th>Due Date</th>
+            <th>Flag Color</th>
+            <th>Status</th>
+          </tr>
+        </thead> 
+        <tbody id="viewTodoDataId">
+        </tbody>
+      </table>
+    </section>
+
+
+<!-- Delete confirm Modal -->
+<div class="modal fade" id="deleteModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete Warning</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you would like to delete this record?
+      </div>
+      <div class="modal-footer">
+        <button id="modalCancelId" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button id="modalDeleteId" type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of Modal -->
+
+<!-- Record Updated Modal -->
+<div class="modal fade" id="recordUpdateModalId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Record Updated</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Your selected Todo Record has been updated
+      </div>
+      <div class="modal-footer">
+        <button id="recordUpdateModalDismissId" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of Modal -->
+
+
+  </body>
+</html>

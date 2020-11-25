@@ -1,0 +1,26 @@
+{
+  "name": "weekend-sql-to-do-list",
+  "version": "1.0.0",
+  "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbird55044/weekend-sql-to-do-list.git"
+  },
+  "author": "James Bird",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbird55044/weekend-sql-to-do-list/issues"
+  },
+  "homepage": "https://github.com/jbird55044/weekend-sql-to-do-list#readme"
+}

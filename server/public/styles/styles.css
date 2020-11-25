@@ -1,0 +1,67 @@
+.headerStyle {
+   
+    background-color: blanchedalmond;
+}
+
+small {
+    font-size: smaller;
+}
+.centeredClass {
+    margin-left: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    background-color: antiquewhite;
+    margin-left: 20px;
+}
+
+.userInputClass {
+    background-image: url("../media/stone_wallpaper.jpg");
+    background-size: cover;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin-left: 40px;
+    padding: 15px;
+    max-width: 725px;
+}
+
+.userInputClass span {
+    font-size: x-small;
+}
+
+.userInputClass input {
+    padding: 5px;
+    margin-bottom: 3px;
+}
+
+.addButtonsDivClass {
+margin: 25px;
+}
+.addButtonsClass {
+    margin-top: 3px;
+}
+.dropDownAreaClass {
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+
+.dropDownAreaClass .floatLeft {
+    float: left;
+    padding: 5px;
+    width: 100 px;
+}
+
+.floatCenter{
+    margin-left: 5px;
+    float: left;
+}
+
+.dropDownAreaClass .floatRight {
+    margin-left: 340px;
+}
+
+.btn-deleteTodoClass {
+    border: 1px solid black;
+    border-radius: 2px;
+}
