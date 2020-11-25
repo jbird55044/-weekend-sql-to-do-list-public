@@ -41,6 +41,14 @@ margin: 25px;
 .addButtonsClass {
     margin-top: 3px;
 }
+
+.btn-group {
+    margin-left: 15px;
+}
+
+.table {
+    margin-top: 15px;
+}
 .dropDownAreaClass {
     margin: 0 auto;
     /* border: 1px solid black; */

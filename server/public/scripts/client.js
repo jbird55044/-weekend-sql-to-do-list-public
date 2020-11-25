@@ -1,4 +1,7 @@
 console.log( 'Vatti Rocks' );
+const app = {
+  listFilter: 'all'
+}
  
 $( document ).ready( function(){
   console.log( 'document ready' );
@@ -9,7 +12,7 @@ $( document ).ready( function(){
   getTodos(0);
 
 }); // end doc ready
-
+ 
 // add New Task button listeners
 function setupClickListeners() {
   $( '#addButtonId' ).on( 'click', function(){
@@ -130,6 +133,31 @@ function setupClickListeners() {
     getTodos(0);
     // Descending
   })
+
+  // filter on records filter (3 button group) listener
+  $('#filterAllId').on ('click', function (){
+    app.listFilter = 'All'
+    $('#filterAllId').css ('color', 'black')
+    $('#filterOpenId').css ('color', '')
+    $('#filterCompleteId').css ('color', '')
+    getTodos(0);
+  } )
+  $('#filterOpenId').on ('click', function (){
+    app.listFilter = 'Open'
+    $('#filterOpenId').css ('color', 'black')
+    $('#filterAllId').css ('color', '')
+    $('#filterCompleteId').css ('color', '')
+    getTodos(0);
+  } )
+  $('#filterCompleteId').on ('click', function (){
+    app.listFilter = 'Complete'
+    $('#filterCompleteId').css ('color', 'black')
+    $('#filterAllId').css ('color', '')
+    $('#filterOpenId').css ('color', '')
+    getTodos(0);
+  } )
+
+
 }  // end of button listeners
 
 
@@ -148,7 +176,14 @@ function getTodos(todoId){
     console.log('get response', response);
     // append data to the DOM
     let dueDate = null;
+    console.log (`app.listFilter`, app.listFilter);
     for (let i = 0; i < response.length; i++) {
+      if ( app.listFilter === 'Complete' ) {
+        if ( response[i].status !== 'Complete' ) continue
+      } else if ( app.listFilter === 'Open' ) {
+        if ( response[i].status === 'Complete' ) continue
+      };
+
       if ( (response[i].due_date == null) || (response[i].due_date == undefined) ) {
         dueDate = ' ';
       } else {

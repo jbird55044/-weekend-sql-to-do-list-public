@@ -7,7 +7,7 @@ if ( process.env.DATABASE_URL ) {
         connectionString: process.env.DATABASE_URL, // connect to URL from Heruko
         ssl: {rejectUnauthorized: false},
     }
-}  else {
+}  else { 
     config = {
         database: 'weekend-to-do-app', //THIS WILL CHANGE -- your actual database name 
         host: 'localhost', // connect to our local computer
