@@ -1,6 +1,7 @@
 console.log( 'Vatti Rocks' );
 const app = {
-  listFilter: 'all'
+  listFilter: 'all',
+  dueDate: ''
 }
  
 $( document ).ready( function(){
@@ -157,7 +158,14 @@ function setupClickListeners() {
     getTodos(0);
   } )
 
-
+  // date picker found at: https://github.com/fengyuanchen/datepicker/blob/master/README.md
+  // $('#dueDateId').on ('click', function (){
+  //   app.dueDate = $('#dueDateId').val()
+  //   console.log (`appduedate`, app.dueDate);
+  // })
+  // $('[data-toggle="datepicker"]').datepicker({ date: `'${app.dueDate}'` });
+  $('[data-toggle="datepicker"]').datepicker({autoPick: true});
+ 
 }  // end of button listeners
 
 
@@ -166,17 +174,14 @@ function getTodos(todoId){
   clearInputEntries();
   let sortOrder = $('#sortIndicatorId').text()
   if ( sortOrder === 'Ascending') {sortOrder = 'ASC'} else {sortOrder = 'DESC'}
-  console.log (`URL:`, `/tododata/${todoId}?order=${sortOrder}`);
   let html = '';
   $("#viewTodoDataId").empty();
   $.ajax({
     type: 'GET',
     url: `/tododata/${todoId}?order=${sortOrder}`
   }).then(function (response) {
-    console.log('get response', response);
     // append data to the DOM
     let dueDate = null;
-    console.log (`app.listFilter`, app.listFilter);
     for (let i = 0; i < response.length; i++) {
       if ( app.listFilter === 'Complete' ) {
         if ( response[i].status !== 'Complete' ) continue
@@ -190,7 +195,7 @@ function getTodos(todoId){
         dueDate = formatSqlDate(response[i].due_date);
       }
       
-      html = `<tr class="trTableBodyClass" data-id="${response[i].id}">
+      html = `<tr class="trTableBodyClass" data-id="${response[i].id}" id="trId${response[i].id}">
                     <td>${response[i].name}</td>
                     <td>${response[i].comment}</td>
                     <td>${formatSqlDate(response[i].create_date)}</td>
@@ -203,7 +208,7 @@ function getTodos(todoId){
       let catColor = response[i].category_color
       if ( catColor === 'Yellow') catColor = '#bebe02'
       $(`#catColorId${response[i].id}`).css ('color', catColor)
-      if ( response[i].status === 'Complete' )  $('.trTableBodyClass').css ('textDecoration', 'line-through')
+      if ( response[i].status === 'Complete' )  $(`#trId${response[i].id}` ).css ('textDecoration', 'line-through')
       }  // end of for loop
   })
   .catch ( function (error){
@@ -211,7 +216,7 @@ function getTodos(todoId){
     alert ('Something bad happened in GET')
   });
 }   // end get todos
-ß
+
 // formatting and POST of todo data
 function saveTodos(  ){
   // ajax call to server to get todos
@@ -339,15 +344,12 @@ function selectRowGrabData (todoId) {
     $('#nameId').val(response[0].name);
     $('#noteId').val(response[0].comment);
     if ( (response[0].due_date == null) || (response[0].due_date == undefined) ) {
-      console.log (`date null`); 
     } else {
-      console.log (`date not null`);
       $('#dueDateId').val(formatSqlDate(response[0].due_date));
     }
     $('#ddMenuCategoryId').empty()
     $('#ddMenuCategoryId').append(response[0].category_color);
     $('#ddMenuCategoryId').css ('backgroundColor', response[0].category_color)
-    console.log (`response[0].category_color`, response[0].category_color);
     if ( response[0].category_color === "Yellow") {
       $('#ddMenuCategoryId').css ('color', 'black' )
     } else {

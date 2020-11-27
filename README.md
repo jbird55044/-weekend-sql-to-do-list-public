@@ -21,7 +21,7 @@ To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](https:
 
 ## Installation
 
-requires server.js to run in NodeJS.  Use "npm Start" script to start server.  Default is port 5000.  Install: bootstrap, PostgreSQL (pg), express.  Database file included in root of application files.  Bootstrap.bundle.js required for active pulldowns.
+requires server.js to run in NodeJS.  Use "npm Start" script to start server.  Default is port 5000.  Install: bootstrap, PostgreSQL (pg), express.  Database file included in root of application files.  Bootstrap.bundle.js required for active pulldowns.  "npm install @chenfengyuan/datepicker" is required for the datepicker routine.
 
 ## Usage
 Upon starting application, all tasks appear in table below entry area.   Click on any row to modify it's contents, or delete the row.  To add a new task, either populate the data from a row below by clicking on it, or enter fresh data, then select <add new task>. 

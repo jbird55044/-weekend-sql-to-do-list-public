@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html> 
   <head>
     <meta charset="utf-8">
     <title>Jims Todo Application</title>
     <script src="vendors/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="vendors/bootstrap.bundle.js" charset="utf-8"></script>
+    <script src="vendors/datepicker.min.js"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/datepicker.css" >
     <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body> 
@@ -28,7 +30,7 @@
       <input type="text" id="nameId" value="" placeholder="Task Name" size=20>
       <input type="text" id="noteId" value="" placeholder="Task Note" size=50>
       <div class="dropDownAreaClass">
-        <input class="floatLeft" type="text" id="dueDateId" value="" placeholder="Due Date" size=10>
+        <input class="floatLeft" data-toggle="datepicker" type="text" id="dueDateId" value="" placeholder="Due Date" size=10>
         <label class="floatLeft">Category: </label>
         <div class="dropdown floatCenter">
           <button class="btn btn-secondary dropdown-toggle " type="button" id="ddMenuCategoryId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
