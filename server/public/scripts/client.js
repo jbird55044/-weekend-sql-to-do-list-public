@@ -17,13 +17,11 @@ $( document ).ready( function(){
 // add New Task button listeners
 function setupClickListeners() {
   $( '#addButtonId' ).on( 'click', function(){
-    console.log( 'in addButton on click' );
     saveTodos();
   });
 
   //update task button listener
   $('#modifyButtonId').on( 'click', function() {
-    console.log (`modify button`);
     updateTodo();
   })
   
@@ -72,7 +70,6 @@ function setupClickListeners() {
     $('#ddMenuCategoryId').css ('color', 'white')
     $('#ddMenuCategoryId').empty();
     $('#ddMenuCategoryId').append('Red');
-    console.log (`pressed red`);
   })
 
   $('#yellowButtonId').on ('click', function () {
@@ -80,7 +77,6 @@ function setupClickListeners() {
     $('#ddMenuCategoryId').css ('color', 'black')
     $('#ddMenuCategoryId').empty();
     $('#ddMenuCategoryId').append('Yellow');
-    console.log (`pressed Yellow`);
   })
 
   $('#blueButtonId').on ('click', function () {
@@ -88,7 +84,6 @@ function setupClickListeners() {
     $('#ddMenuCategoryId').css ('color', 'white')
     $('#ddMenuCategoryId').empty();
     $('#ddMenuCategoryId').append('Blue');
-    console.log (`pressed Blue`);
   })
 
   $('#greyButtonId').on ('click', function () {
@@ -96,7 +91,6 @@ function setupClickListeners() {
     $('#ddMenuCategoryId').css ('color', 'white')
     $('#ddMenuCategoryId').empty();
     $('#ddMenuCategoryId').append('Grey');
-    console.log (`pressed Grey`);
   })
 
   $('#activeButtonId').on ('click', function () {
@@ -116,7 +110,7 @@ function setupClickListeners() {
 
   $('#completeButtonId').on ('click', function () {
     $('#ddMenuStatusId').empty();
-    $('#ddMenuStatusId').append ('Complete');
+    $('#ddMenuStatusId').append ('Completed');
   })
 
   // sort order listener
@@ -151,7 +145,7 @@ function setupClickListeners() {
     getTodos(0);
   } )
   $('#filterCompleteId').on ('click', function (){
-    app.listFilter = 'Complete'
+    app.listFilter = 'Completed'
     $('#filterCompleteId').css ('color', 'black')
     $('#filterAllId').css ('color', '')
     $('#filterOpenId').css ('color', '')
@@ -183,10 +177,10 @@ function getTodos(todoId){
     // append data to the DOM
     let dueDate = null;
     for (let i = 0; i < response.length; i++) {
-      if ( app.listFilter === 'Complete' ) {
-        if ( response[i].status !== 'Complete' ) continue
+      if ( app.listFilter === 'Completed' ) {
+        if ( response[i].status !== 'Completed' ) continue
       } else if ( app.listFilter === 'Open' ) {
-        if ( response[i].status === 'Complete' ) continue
+        if ( response[i].status === 'Completed' ) continue
       };
 
       if ( (response[i].due_date == null) || (response[i].due_date == undefined) ) {
@@ -208,7 +202,7 @@ function getTodos(todoId){
       let catColor = response[i].category_color
       if ( catColor === 'Yellow') catColor = '#bebe02'
       $(`#catColorId${response[i].id}`).css ('color', catColor)
-      if ( response[i].status === 'Complete' )  $(`#trId${response[i].id}` ).css ('textDecoration', 'line-through')
+      if ( response[i].status === 'Completed' )  $(`#trId${response[i].id}` ).css ('textDecoration', 'line-through')
       }  // end of for loop
   })
   .catch ( function (error){
@@ -227,7 +221,6 @@ function saveTodos(  ){
   if ( $('#ddMenuStatusId').text() === 'Completed') {
     completedDate = formattedTodayDate;
   }
-  console.log (`$('#dueDateId').val()`, $('#dueDateId').val());
   if ( ($('#dueDateId').val() == '') || ($('#dueDateId').val() == null) ) {
     dueDate = null;
   } else {
@@ -242,7 +235,6 @@ function saveTodos(  ){
         comment: $('#noteId').val(),
         create_date: formattedTodayDate,
         modified_date: formattedTodayDate,
-        // due_date: $('#dueDateId').val(),
         due_date: dueDate,
         completed_date: completedDate,
         category_color: $('#ddMenuCategoryId').text(),
